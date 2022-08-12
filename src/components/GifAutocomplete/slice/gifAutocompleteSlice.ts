@@ -29,11 +29,19 @@ export const gifAutocompleteSlice = createSlice<GifAutocompleteSliceState, any>(
       ) => {
         state.currentGifsSearch = action.payload;
       },
+      onGifSearchMoreResponseSuccess: (
+        state: GifAutocompleteSliceState,
+        action: PayloadAction<CurrentGifsSearch>
+      ) => {
+        state.currentGifsSearch.data = action.payload.data;
+        state.currentGifsSearch.offset = action.payload.offset;
+      },
     },
   }
 );
 
 // Action creators are generated for each case reducer function
-export const { onGifSearchResponseSuccess } = gifAutocompleteSlice.actions;
+export const { onGifSearchResponseSuccess, onGifSearchMoreResponseSuccess } =
+  gifAutocompleteSlice.actions;
 
 export default gifAutocompleteSlice.reducer;
