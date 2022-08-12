@@ -23,8 +23,13 @@ export const GifAutocompleteBase: React.FC<GifAutocompleteBaseProps> = ({
         value={value}
         onChange={onChangeHandler}
         className={styles['autocomplete-input']}
+        placeholder="Search gifs..."
       />
-      <div className={styles['autocomplete-children-wrapper']}>{children}</div>
+      {children ? (
+        <div className={styles['autocomplete-children-wrapper']}>
+          {children}
+        </div>
+      ) : null}
     </div>
   );
 };

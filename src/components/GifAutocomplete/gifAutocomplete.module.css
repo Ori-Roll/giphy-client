@@ -23,10 +23,14 @@
   overflow-x: hidden;
   max-height: calc(var(--total-height) - var(--input-height) - 20px);
   margin-bottom: 20px;
+  scrollbar-width: thin;
+  padding: 5px;
 }
 
 .gif-item-wrapper {
   position: relative;
+  padding: 0 2px;
+  margin: 0;
 }
 
 .gif-item {
@@ -36,8 +40,11 @@
 .gif-item-text {
   background-color: rgb(255, 255, 106);
   position: absolute;
-  bottom: 0;
-  width: 80%;
+  bottom: 6px;
+  left: 6px;
+  width: 90%;
   overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: smaller;
 }

@@ -26,3 +26,16 @@ h6 {
   background-color: #cdcdcd;
   height: 100vh;
 }
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(206, 206, 206);
+  outline: none;
+}
