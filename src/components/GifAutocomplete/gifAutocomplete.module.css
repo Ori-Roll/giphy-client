@@ -1,0 +1,43 @@
+.autocomplete-wrapper {
+  --input-height: 50px;
+  --total-height: 450px;
+  width: 200px;
+  background-color: #ffffff;
+  border-radius: calc(var(--input-height) / 2);
+  overflow: hidden;
+  max-height: var(--total-height);
+}
+.autocomplete-input {
+  --height: 50px;
+  height: var(--input-height);
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: calc(var(--input-height) / 2);
+  border-radius: calc(var(--input-height) / 2);
+}
+
+.autocomplete-children-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: calc(var(--total-height) - var(--input-height) - 20px);
+  margin-bottom: 20px;
+}
+
+.gif-item-wrapper {
+  position: relative;
+}
+
+.gif-item {
+  width: 100%;
+}
+
+.gif-item-text {
+  background-color: rgb(255, 255, 106);
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

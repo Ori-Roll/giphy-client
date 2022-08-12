@@ -21,8 +21,8 @@ export const GifAutocomplete = () => {
 
   return (
     <GifAutocompleteBase value={value} onChange={onChangeHandler}>
-      {bla.map((item) => (
-        <div />
+      {bla.map((gifItem) => (
+        <GifAutocompleteItem gifItem={gifItem} />
       ))}
     </GifAutocompleteBase>
   );
