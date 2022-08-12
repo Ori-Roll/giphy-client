@@ -1,30 +1,32 @@
 import { handleError } from '../apiErrorHandlers/basicErrorHandle';
 
-import { SingleResponse } from 'giphy-api';
+import { MultiResponse } from 'giphy-api';
 
 import axios from 'axios';
 
 const GIPHY_API_KEY = 'BPQxDk7fvxwaFbNgBX9xOdvGpBDgEysB';
-const GIPHY_BASE_URL = 'https://api.giphy.com/v1/gifs/search';
+const GIPHY_BASE_URL = 'https://api.giphy.com/v1';
 const GIPHY_GIF_SEARCH_URL = '/gifs/search';
 
-export const callSearchGiphyApi = async (phrase: string) => {
+export const callSearchGiphyApi = async (
+  phrase: string
+): Promise<MultiResponse | undefined> => {
   if (!phrase) console.error('no search phrase provided');
 
   const fullSearchUrl = `${GIPHY_BASE_URL}${GIPHY_GIF_SEARCH_URL}?api_key=${GIPHY_API_KEY}&q=${phrase}`;
+
   // TODO: Is this the right way?
   try {
-    const response = await axios.get<SingleResponse>(
-      'https://api.giphy.com/v1/gifs/search?api_key=BPQxDk7fvxwaFbNgBX9xOdvGpBDgEysB&q=cheeseburgers',
-      {
-        headers: {
-          // api_key: apiKey,
-          // q: 'cheeseburgers',
-        },
-      }
-    );
-    console.log('response ', response);
-    return response;
+    const { data } = await axios.get<MultiResponse>(fullSearchUrl, {
+      headers: {
+        // api_key: apiKey,
+        // q: 'cheeseburgers',
+      },
+    });
+
+    if (!data) throw new Error('no data');
+
+    return data;
   } catch (err: unknown) {
     if (err instanceof Error) handleError(err);
   }
