@@ -12,7 +12,7 @@ export const callSearchGiphyApi = async (phrase: string) => {
   if (!phrase) console.error('no search phrase provided');
 
   const fullSearchUrl = `${GIPHY_BASE_URL}${GIPHY_GIF_SEARCH_URL}?api_key=${GIPHY_API_KEY}&q=${phrase}`;
-
+  // TODO: Is this the right way?
   try {
     const response = await axios.get<SingleResponse>(
       'https://api.giphy.com/v1/gifs/search?api_key=BPQxDk7fvxwaFbNgBX9xOdvGpBDgEysB&q=cheeseburgers',
