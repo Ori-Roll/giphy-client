@@ -5,8 +5,7 @@ import {
   onGifSearchResponseSuccess,
   onGifSearchMoreResponseSuccess,
 } from '../slice/gifAutocompleteSlice';
-import { store } from '../../../stores';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const ITEMS_LIMIT = 9;
 
@@ -15,52 +14,34 @@ const getSearchData = async (searchPhrase: string, offset?: number) => {
   return res as MultiResponse;
 };
 
-const useGifGetDataHandler = () => {
+export const useGifGetDataHandler = () => {
   const dispatch = useDispatch();
 
   const [currentOffset, setCurrentOffset] = useState(0);
-  const [nextOffset, setnextOffset] = useState(ITEMS_LIMIT + 1);
 
   const searchGifs = async (searchPhrase: string) => {
     const { data, pagination }: MultiResponse = await getSearchData(
       searchPhrase
     );
+    console.log('got', data);
     if (onGifSearchResponseSuccess) {
-      dispatch(
-        onGifSearchResponseSuccess({
-          // totalCount: pagination.total_count,
-          // count: pagination.count,
-          // offset: pagination.offset,
-          // data: [],
-          totalCount: 2,
-          count: 0,
-          offset: 0,
-          data: [],
-        })
-      );
+      dispatch(onGifSearchResponseSuccess(data));
     }
+    setCurrentOffset(pagination.offset);
   };
 
   const searchMoreGifs = async (searchPhrase: string) => {
+    const nextOffset = currentOffset + ITEMS_LIMIT;
+
     const { data, pagination }: MultiResponse = await getSearchData(
       searchPhrase,
       nextOffset
     );
 
     if (onGifSearchMoreResponseSuccess) {
-      dispatch(
-        onGifSearchMoreResponseSuccess({
-          // totalCount: pagination.total_count,
-          // count: pagination.count,
-          // offset: pagination.offset,
-          // data: [],
-          totalCount: 2,
-          count: 0,
-          offset: 0,
-          data: [],
-        })
-      );
+      dispatch(onGifSearchMoreResponseSuccess(data));
     }
+    setCurrentOffset(pagination.offset);
   };
 
   return { searchGifs, searchMoreGifs };

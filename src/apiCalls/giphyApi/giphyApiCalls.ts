@@ -17,18 +17,19 @@ export const callSearchGiphyApi = async (
 
   const additionalParams = searchParams
     ? Object.entries(searchParams)
-        .map(([key, value]: any[]) => `${key}${value}`)
-        .join('')
+        .map(([key, value]: any[]) => `${key}=${value}`)
+        .join('&')
     : '';
 
-  const fullSearchUrl = `${GIPHY_BASE_URL}${GIPHY_GIF_SEARCH_URL}?api_key=${GIPHY_API_KEY}&q=${phrase}${additionalParams}`;
+  const fullSearchUrl = `${GIPHY_BASE_URL}${GIPHY_GIF_SEARCH_URL}?api_key=${GIPHY_API_KEY}&q=${phrase}&${additionalParams}`;
+  console.log('calling fullSearchUrl ', fullSearchUrl);
 
   // TODO: Is this the right way?
   try {
     const { data } = await axios.get<MultiResponse>(fullSearchUrl, {
       headers: {},
     });
-
+    console.log('res data ', data);
     if (!data) throw new Error('no data');
 
     return data;
