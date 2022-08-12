@@ -7,7 +7,7 @@ export interface CurrentGifsSearch {
   data: [];
 }
 
-interface GifAutocompleteSliceState {
+export interface GifAutocompleteSliceState {
   currentGifsSearch: CurrentGifsSearch;
 }
 
