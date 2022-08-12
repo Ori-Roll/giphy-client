@@ -1,10 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { GIFObject } from 'giphy-api';
 
 export interface CurrentGifsSearch {
-  totalCount: number | null;
-  count: null;
-  offset: null;
-  data: [];
+  data: GIFObject[];
 }
 
 export interface GifAutocompleteSliceState {
@@ -16,25 +14,21 @@ export const gifAutocompleteSlice = createSlice<GifAutocompleteSliceState, any>(
     name: 'gifAutocomplete',
     initialState: {
       currentGifsSearch: {
-        totalCount: null,
-        count: null,
-        offset: null,
         data: [],
       },
     },
     reducers: {
       onGifSearchResponseSuccess: (
         state: GifAutocompleteSliceState,
-        action: PayloadAction<CurrentGifsSearch>
+        action: PayloadAction<GIFObject[]>
       ) => {
-        state.currentGifsSearch = action.payload;
+        state.currentGifsSearch.data = action.payload;
       },
       onGifSearchMoreResponseSuccess: (
         state: GifAutocompleteSliceState,
-        action: PayloadAction<CurrentGifsSearch>
+        action: PayloadAction<GIFObject[]>
       ) => {
-        state.currentGifsSearch.data = action.payload.data;
-        state.currentGifsSearch.offset = action.payload.offset;
+        state.currentGifsSearch.data.push(...action.payload);
       },
     },
   }
