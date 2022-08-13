@@ -11,7 +11,7 @@ export const ViewPage = () => {
 
   const imageCurrentURL = currentGif?.images.original.webp;
   const imageCurrentSize = currentGif?.images.original.size;
-  const { id: imageCurrentId, title: imageCurrentTitle } = currentGif || {
+  const { title: imageCurrentTitle } = currentGif || {
     id: null,
     title: null,
   };
