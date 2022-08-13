@@ -1,1 +1,1 @@
-export * from './GifAutocomplete';
+export * from './GifLister';

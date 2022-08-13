@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import gifAutocompleteSlice from '../components/GifAutocomplete/slice/gifAutocompleteSlice';
+import gifListerSlice from '../components/GifLister/slice/gifListerSlice';
 
 export const store = configureStore({
-  reducer: gifAutocompleteSlice,
+  reducer: gifListerSlice,
 });
 
 // export type AppDispatch = typeof store.dispatch;
