@@ -1,0 +1,17 @@
+.view-page-wrapper {
+  max-width: 80vw;
+}
+
+.view-page-img {
+  color: green;
+}
+
+.view-page-id {
+  color: var(--opposite-color);
+}
+.view-page-title {
+  color: var(--accent-color);
+}
+.view-page-size {
+  background-color: var(--opposite-color);
+}
