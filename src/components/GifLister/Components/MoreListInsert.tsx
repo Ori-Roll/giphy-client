@@ -19,7 +19,7 @@ export const MoreListInsert: React.FC<MoreListInsertProps> = ({
 }) => {
   return (
     <div
-      key="gyphy-more-list-insert"
+      key="giphy-more-list-insert"
       className={styles['list-loader-status-insert']}
       onClick={onShowMoreHandler}
     >
