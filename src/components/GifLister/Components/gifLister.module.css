@@ -1,0 +1,96 @@
+.lister-wrapper {
+  width: 700px;
+  overflow: hidden;
+  max-height: var(--total-height);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--opposite-color);
+  border-radius: calc(var(--input-height) / 1.5);
+  background-color: #000000;
+  padding: 20px;
+}
+
+.lister-head-wrapper {
+  display: flex;
+  gap: calc(var(--input-height) / 4);
+}
+
+.lister-head-wrapper h2 {
+  font-size: calc(var(--input-height) / 2);
+  font-weight: 800;
+  padding: calc(var(--input-height) / 6);
+  color: var(--accent-color);
+  flex: 1;
+  white-space: nowrap;
+}
+
+.lister-input {
+  --height: 50px;
+  height: var(--input-height);
+  background-color: #c2c2c2;
+  width: 100%;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: calc(var(--input-height) / 2);
+  border-radius: calc(var(--input-height) / 2);
+}
+.lister-input:hover,
+.lister-input:focus {
+  background-color: #ffffff;
+}
+
+.lister-children-with-insert-wrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  border-radius: calc(var(--input-height) / 4);
+  max-height: calc(var(--total-height) - var(--input-height) - 100px);
+  margin-bottom: 20px;
+}
+
+.lister-children-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.gif-item-wrapper {
+  position: relative;
+  width: 200px;
+  height: 180px;
+  overflow: hidden;
+  background-color: var(--opposite-color);
+  cursor: pointer;
+}
+
+.gif-item-text {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: smaller;
+  text-overflow: ellipsis;
+  text-align: center;
+  bottom: 0;
+  left: 0px;
+  width: 100%;
+  padding: 5px;
+  color: #ffffff;
+  background-color: var(--opposite-color);
+}
+
+.list-loader-status-insert {
+  overflow: hidden;
+  text-align: center;
+  width: 100px;
+  padding: 10px 5px;
+  color: #ffffff;
+  margin: 20px auto 0 auto;
+  border: 1px solid black;
+}
+
+.list-loader-status-insert:hover {
+  border: 1px solid var(--accent-color);
+  border-radius: 10px;
+}
